@@ -1,2 +1,3 @@
-# fotia
-A demo Golang application to use for demo usage of Prometheus
+# Fotia
+
+A demo application to use in conjunction with Prometheus.
