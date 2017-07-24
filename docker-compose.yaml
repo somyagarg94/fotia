@@ -1,0 +1,26 @@
+fotia:
+  image: quay.io/swade1987/fotia:1.1.1
+  ports:
+    - 8080:8080
+  labels:
+      org.label-schema.group: "monitoring"
+
+prometheus-server:
+  image: prom/prometheus
+  ports:
+    - 9090:9090
+  links:
+    - fotia:fotia
+  volumes:
+    - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+  labels:
+      org.label-schema.group: "monitoring"
+
+grafana-ui:
+  image: grafana/grafana
+  ports:
+    - 3000:3000
+  environment:
+    - GF_SECURITY_ADMIN_PASSWORD=secret
+  links:
+    - prometheus-server:prometheus

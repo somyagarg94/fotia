@@ -67,3 +67,6 @@ push-image:
 
 clean:
 	rm -rf tools vendor .glide
+
+run:
+	docker-compose up -d
